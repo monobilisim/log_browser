@@ -44,7 +44,7 @@ function searchDir($base_dir="./",$p="",$f="",$allowed_depth=-1){
 				$add=true;
 			}
 		}else{
-			if($fName==".")continue;
+			if($fName=="."||$fName==".openssl")continue;
 			$add=true;
 
 			if($f!=""){
