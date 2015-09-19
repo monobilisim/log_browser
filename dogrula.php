@@ -8,7 +8,7 @@ chdir('/tmp');
 exec('cp /logimza/' . $file . ' ./');
 exec('tar zxvf ' . basename($file));
 // Doğrulama komutu
-exec('/usr/local/bin/openssl ts -verify -data /tmp/' . $log_type . '.log -in /tmp/' . $log_type . '.log.der -token_in -CAfile /usr/local/openssl/CA/cacert.pem -untrusted /usr/local/openssl/CA/tsacert.pem', $result);
+exec('openssl ts -config /logimza/.openssl/openssl.cnf -verify -data /tmp/' . $log_type . '.log -in /tmp/' . $log_type . '.log.der -token_in -CAfile /logimza/.openssl/CA/cacert.pem -untrusted /logimza/.openssl/CA/tsacert.pem', $result);
 
 if ($result[0] == 'Verification: OK') {
 	$imza = file_get_contents($log_type . '.log.imza');
